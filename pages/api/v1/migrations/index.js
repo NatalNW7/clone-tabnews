@@ -8,6 +8,7 @@ export default async function migrations(req, res) {
   if (req.method === "GET") {
     const pendingMigrations = await migrate(dbClient, true);
     await dbClient.end();
+
     return res.status(200).json(pendingMigrations);
   }
 

@@ -1,9 +1,14 @@
+import { waitForAllServices } from "tests/orchestrator";
+
+beforeAll(async () => {
+  await waitForAllServices;
+});
+
 test("GET /status should return 200", async () => {
   const res = await fetch("http://localhost:3000/api/v1/status");
   expect(res.status).toBe(200);
 
   const body = await res.json();
-  console.log(body);
 
   expect(body.update_at).toBeDefined();
 

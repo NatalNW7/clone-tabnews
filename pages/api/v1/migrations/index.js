@@ -28,9 +28,10 @@ export default async function migrations(req, res) {
       return res.status(200).json(migratedMigrations);
     }
   } catch (error) {
+    console.error(error);
     throw error;
   } finally {
-    dbClient.end();
+    await dbClient.end();
   }
 }
 
